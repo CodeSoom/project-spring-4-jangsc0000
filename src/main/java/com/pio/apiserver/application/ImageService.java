@@ -1,6 +1,7 @@
 package com.pio.apiserver.application;
 
 import com.pio.apiserver.domain.Image;
+import com.pio.apiserver.dto.ImageCreationData;
 
 /**
  * 이미지 등록, 조회, 삭제를 담당하는 서비스입니다.

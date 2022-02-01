@@ -29,8 +29,6 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     runtimeOnly 'com.h2database:h2'
     implementation 'org.springframework.cloud:spring-cloud-starter-aws'
-    implementation 'org.springframework.cloud:spring-cloud-starter-aws-messaging'
-    implementation 'org.springframework.cloud:spring-cloud-starter-aws-parameter-store-config'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }

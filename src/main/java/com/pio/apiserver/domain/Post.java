@@ -1,12 +1,8 @@
 package com.pio.apiserver.domain;
 
-import lombok.AccessLevel;
 import lombok.Builder;
-import lombok.Data;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
 
@@ -24,7 +20,6 @@ import java.util.Collection;
 
 @Builder
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Post {
     @Id

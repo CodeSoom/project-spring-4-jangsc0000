@@ -54,26 +54,26 @@ class ImageServiceTest {
             static final String NEW_IMAGE_URL = "https://test.com/image.jpg";
 
             ImageCreationData imageCreationData;
+            Post post;
 
             @BeforeEach
             void prepare() {
-                // TODO : post를 실제 생성하여, 생성된 post id로 테스트하도록 변경
-                Long post_id = 1L;
+                post = postRepository.save(Post.builder().build());
+
                 imageCreationData = ImageCreationData.builder()
                         .contentType(NEW_IMAGE_TYPE)
-                        .postId(post_id)
                         .image(NEW_IMAGE_BINS)
                         .build();
 
-                given(s3Uploader.upload(NEW_IMAGE_BINS, NEW_IMAGE_TYPE)).willReturn(NEW_IMAGE_URL);
+                given(s3Uploader.upload(imageCreationData.getImage(), imageCreationData.getContentType())).willReturn(NEW_IMAGE_URL);
             }
 
             @Test
             @DisplayName("이미지를 등록하고 리턴한다.")
             void it_returns_image() {
-                Image result = imageService.create(imageCreationData);
-                assertThat(result.getImageUrl()).isNotBlank();
-                assertThat(result.getPostId()).isEqualTo(imageCreationData.getPostId());
+                Image result = imageService.create(post.getId(), imageCreationData);
+                assertThat(result.getImageUrl()).isEqualTo(NEW_IMAGE_URL);
+                assertThat(result.getPostId()).isEqualTo(post.getId());
                 assertThat(result.getContentType()).isEqualTo(imageCreationData.getContentType());
             }
         }

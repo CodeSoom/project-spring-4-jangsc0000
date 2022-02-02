@@ -7,12 +7,10 @@ import lombok.Getter;
 @Builder
 @Getter
 public class ImageCreationData {
-    private Long postId;
-    private String url;
     private String contentType;
     private byte[] image;
 
-    public Image createImage() {
+    public Image createImage(Long postId, String url) {
         return Image.builder()
                 .postId(postId)
                 .imageUrl(url)
